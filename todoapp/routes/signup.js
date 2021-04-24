@@ -25,7 +25,8 @@ router.post('/', function (req, res, next) {
       } else if (password === repassword) {
         knex("users")
           .insert({name: username, password: password})
-          .then(function () {
+          .then(function (results) {
+            req.session.userid = results[0];
             res.redirect("/");
           })
           .catch(function (err) {
