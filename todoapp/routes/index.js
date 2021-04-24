@@ -12,10 +12,13 @@ const connection = mysql.createConnection({
 });
 
 router.get('/', function (req, res, next) {
+  const userId = req.session.userid;
+  const isAuth = Boolean(userId);
+  console.log(`isAuth: ${isAuth}`);
+
   knex("tasks")
     .select("*")
     .then(function (results) {
-      console.log(results);
       res.render('index', {
         title: 'ToDo App',
         todos: results,
@@ -28,6 +31,7 @@ router.get('/', function (req, res, next) {
       });
     });
 });
+
 
 router.post('/', function (req, res, next) {
   const todo = req.body.add;
