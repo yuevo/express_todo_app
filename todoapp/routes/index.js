@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const mysql = require('mysql');
+const config  = require('../config');
 
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: '[事前準備で設定したrootユーザのパスワード]',
+  password: config.password,
   database: 'todo_app'
 });
 
