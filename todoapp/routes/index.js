@@ -3,7 +3,8 @@ const router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  // 第一引数の「index」でejsファイルを紐付け、第二引数で渡したい値をオブジェクトで渡している
+  res.render('index', { title: 'ToDo App' });
 });
 
 module.exports = router;
